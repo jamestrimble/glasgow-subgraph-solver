@@ -304,8 +304,6 @@ namespace
                         }
                     });
                 });
-            }
-            for (unsigned v = 0 ; v < size ; ++v) {
                 for (int p=1; p<=max_p; p++) {
                     graph_rows[v * max_graphs + p].reset(v);  // zeros on main diagonal
                 }
