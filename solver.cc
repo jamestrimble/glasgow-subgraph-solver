@@ -314,8 +314,10 @@ namespace
         auto build_complement_graphs(vector<PossiblySomeOtherBitSetType_> & graph_rows, unsigned size) -> void
         {
             for (unsigned v = 0 ; v < size ; ++v) {
-                graph_rows[v * max_graphs + 5] = ~graph_rows[v * max_graphs + 0];
-                graph_rows[v * max_graphs + 5].reset(v);  // zeros on main diagonal
+                for (unsigned w = 0 ; w < size ; ++w)
+                    if (! graph_rows[v * max_graphs + 0].test(w))
+                        graph_rows[v * max_graphs + 5].set(w);
+                graph_rows[v * max_graphs + 5].reset(v);     // zeros on main diagonal
             }
         }
 
